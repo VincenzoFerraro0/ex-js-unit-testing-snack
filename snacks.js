@@ -34,9 +34,32 @@ function average(numeri){
     return numeri.reduce((acc, curr ) => acc + curr, 0) / numeri.length;
 }
 
+function isPalindrome(parola) {
+    const parolaInversa = parola.split('').reverse().join('');
+    return parola === parolaInversa
+}
+
+function findPostById(posts, id) {
+    if(isNaN(id)){
+        throw new Error("l'id deve essere un numero")
+    }
+    posts.forEach(p => {
+        if(
+            p.id === undefined ||
+            p.title === undefined ||
+            p.slug === undefined 
+        ){
+            throw new Error("il formato non è valido")
+        }
+    })
+    return posts.find(p => p.id === id) || null
+}
+
 // Esporta le funzioni per l'utilizzo nei test
 module.exports = {
     getInitials,
     createSlug,
-    average
+    average,
+    isPalindrome,
+    findPostById
 }
