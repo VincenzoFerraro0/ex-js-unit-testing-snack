@@ -1,32 +1,40 @@
-
 // ----------------- FUNZIONI ------------------
 
-// Snack 1: Funzione che restituisce le iniziali (es. "Mario Rossi" -> "M.R.")
+/**
+ * Restituisce le iniziali di un nome completo, in formato "X.Y."
+ * Es: "Mario Rossi" → "M.R."
+ */
 function getInitials(nomeCompleto){
-    // Dividiamo la stringa in un array filtrando gli spazi multipli
+    // Rimuove eventuali spazi multipli e divide il nome
     const [nome, cognome] = nomeCompleto.split(" ").filter(str => str !== '');
-    // Prendiamo la prima lettera di nome e cognome, le convertiamo in maiuscolo e formattiamo con il punto
     return `${nome.charAt(0).toUpperCase()}.${cognome.charAt(0).toUpperCase()}.`
 }
 
-// Snack 2: Funzione che restituisce la versione minuscola di una stringa
+/**
+ * Converte una stringa in slug: minuscole e spazi sostituiti da trattini
+ * Es: "Ciao Mondo" → "ciao-mondo"
+ */
 function createSlug(str){
+    if(!str){
+        throw new Error("stringa non valida") // Controllo input non valido
+    }
     return str.toLowerCase().replaceAll(" ", "-")
 }
 
-// Snack 3: Funzione che calcola la media aritmetica di un array di numeri
+/**
+ * Calcola la media aritmetica di un array di numeri
+ * Lancia un errore se l'array contiene valori non numerici
+ */
 function average(numeri){
-    // Verifichiamo che ogni elemento dell'array sia un numero
     numeri.forEach(numero => {
         if(isNaN(numero)){
             throw new Error("average vuole solo numeri")
         }
     });
-    // Calcoliamo la somma totale e dividiamo per il numero di elementi
     return numeri.reduce((acc, curr ) => acc + curr, 0) / numeri.length;
 }
 
-// Esportiamo le funzioni per poterle usare nei test
+// Esporta le funzioni per l'utilizzo nei test
 module.exports = {
     getInitials,
     createSlug,
