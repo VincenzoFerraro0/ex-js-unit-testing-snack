@@ -24,7 +24,21 @@ test("La funzione average calcola la media aritmetica di un array di numeri.", (
     // Test con un valore non numerico: deve generare un errore
     expect(() => average([5, "ciao"])).toThrow()
 })
+
 // Snack 4
 test("La funzione createSlug sostituisce gli spazi con -.", () =>{
     expect(createSlug("CIAO QUESTO è UN TEST")).toBe("ciao-questo-è-un-test")
+})
+
+//function
+
+function isPalindrome(parola){
+    const parolaInversa = parola.split('').reverse().join('');
+    return parola === parolaInversa
+}
+
+// Snack 5
+test("La funzione isPalindrome verifica se una stringa è un palindromo.", () => {
+    expect(isPalindrome('radar')).toBeTruthy()
+    expect(isPalindrome('vincenzo')).toBeFalsy()
 })
